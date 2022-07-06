@@ -4,6 +4,8 @@ import 'package:vrc_finder/model/api/vrc_api.dart';
 import 'package:vrc_finder/presentation/login/login_page.dart';
 import 'package:vrc_finder/presentation/user_view/user_page.dart';
 import 'package:vrc_finder/router.dart';
+import 'package:vrchat_dart/vrchat_dart.dart';
+import 'package:vrc_finder/model/api/vrc_common_api.dart';
 
 class DefaultDrawer extends ConsumerWidget {
 
@@ -13,13 +15,14 @@ class DefaultDrawer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final auth = ref.read(authApiProvider).value;
     final user = auth!.currentUser!;
+
     return Drawer(
       child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
             onDetailsPressed: () {
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => UserPage(id: user.id)
+                  builder: (context) => UserPage(user: user.toLimitedUser())
               ));
             },
             accountName: Text(user.displayName),

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:vrc_finder/model/api/vrc_api.dart';
-import 'package:vrc_finder/model/login_notifier.dart';
+import 'package:vrc_finder/model/notifier/login_notifier.dart';
 import 'package:vrc_finder/presentation/friend_location/friend_location_page.dart';
 import 'package:vrc_finder/router.dart';
+
+import '../../model/api/vrc_common_api.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -60,7 +62,7 @@ class LoginPage extends ConsumerWidget {
                       }
                     }
                     catch (e) {
-                      ref.watch(toastTextProvider.notifier).state = "ログインに失敗しました ${e.toString()}";
+                      ref.read(toastTextProvider.notifier).state = "ログインに失敗しました ${e.toString()}";
                     }
                   },
                 ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:vrc_finder/model/api/vrc_api.dart';
-import 'package:vrc_finder/model/api/vrc_users_api.dart';
 import 'package:vrc_finder/model/world_format.dart';
-import 'package:vrchat_dart/vrchat_dart.dart';
+
+import '../../model/api/vrc_world_api.dart';
 
 class WorldTile extends ConsumerWidget {
   final String location;
@@ -12,6 +11,7 @@ class WorldTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (location == "private" || location == "") return Container();
     final worldId = RegExp(worldIdRegExp)
         .firstMatch(location)!.group(0);
     final world = ref.watch(getWorld(worldId!));
