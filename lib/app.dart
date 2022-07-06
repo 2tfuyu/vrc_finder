@@ -5,6 +5,7 @@ import 'package:vrc_finder/presentation/friend_location/friend_location_page.dar
 import 'package:vrc_finder/presentation/login/login_page.dart';
 import 'package:vrc_finder/router.dart';
 import 'package:vrchat_dart/vrchat_dart.dart';
+import 'package:vrc_finder/model/api/vrc_common_api.dart';
 
 class App extends ConsumerWidget {
   const App({Key? key}) : super(key: key);

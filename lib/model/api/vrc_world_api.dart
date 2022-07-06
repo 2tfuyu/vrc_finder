@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:vrc_finder/model/api/vrc_api.dart';
+import 'package:vrc_finder/model/api/vrc_common_api.dart';
 
 final worldApiProvider = Provider((ref) async {
   final rawApi = await ref.watch(rawApiProvider);
